@@ -22,11 +22,13 @@ export default class NetApi {
         this.client = axiosClient;
     }
 
-    applyUploadUrl(num) {
+    applyUploadUrl(num, pid, tid) {
         const data = {
             uid: 'admin',
-            pid: '0',
-            tid: '1',
+            // pid: pid,
+            // tid: tid,
+            pid: pid,
+            tid: tid,
             method: 'put',
             num: num
         };
