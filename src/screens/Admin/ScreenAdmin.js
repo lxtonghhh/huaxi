@@ -1,16 +1,25 @@
 import React, { Component } from 'react';
-import './App.css';
-import TaskList from './containers/TaskList'
-import ViewTaskList from './containers/ViewTaskList'
-import ProjectList from './containers/ProjectList'
+import './ScreenAdmin.css';
+import TaskList from '../../components/Admin/Task/List'
+import TaskViewList from '../../components/Admin/Task/ViewList'
+import ProjectList from '../../components/Admin/Project/List'
 import 'element-theme-default'
-import './index.css';
+import '../../index.css'
 import {Layout,Loading} from 'element-react'
-import Logo from './components/Logo'
+import UILogo from '../../components/UI/Logo'
 import {postAddTask,postAddProject,getAllTasks,postUpdateTask,postUpdateProject,postDeleteProject,
-postDeleteTask,postFinishTask,parseProjects} from './api'
+postDeleteTask,postFinishTask,parseProjects} from '../../api'
 import _ from 'lodash'
-class App extends Component {
+function Header(props){
+  return (
+    <div id="top-bar">
+      <div id="logo">
+        <UILogo/>
+      </div>
+    </div>
+  )
+}
+export default class ScreenAdmin extends Component {
   constructor(){
     super()
     this.state={
@@ -303,7 +312,7 @@ class App extends Component {
     }else{
       let activeProject=this._load_project(this.state.activeIndex)
       if(this.state.activeIndex<0){//-1今日任务视图 -2所有任务视图
-        taskList= <ViewTaskList pid={activeProject.pid} name={activeProject.name} 
+        taskList= <TaskViewList pid={activeProject.pid} name={activeProject.name} 
           tasks={activeProject.tasks}
           onAddTask={this.handleAddTask.bind(this)}
           onDeleteTask={this.handleDeleteTask.bind(this)}
@@ -326,11 +335,7 @@ class App extends Component {
           {this.state.isLoading&&<Loading fullscreen={true} />}
           <Layout.Row gutter="20">
             <Layout.Col span="24">
-              <div id="top-bar">
-                <div id="logo">
-                <Logo/>
-                </div>
-              </div>
+              <Header />
             </Layout.Col>
           </Layout.Row>
           <Layout.Row gutter="20" style={{paddingTop:'48px'}}>
@@ -357,4 +362,4 @@ class App extends Component {
   }
 }
 
-export default App;
+

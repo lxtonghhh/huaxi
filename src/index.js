@@ -1,11 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { Router,hashHistory,Route} from 'react-router'
-import routes from './routes';
 import workReducer from './reducers/work'
 
 import ScreenTask from './screens/Task/ScreenTask'

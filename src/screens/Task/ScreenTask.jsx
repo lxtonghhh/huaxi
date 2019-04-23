@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ScreenTask.css';
 import 'element-theme-default'
-import '../../index.css';
+import '../../index.css'
 import {Layout,Loading} from 'element-react'
 import UILogo from '../../components/UI/Logo'
 import ProjectList from '../../components/Project/List'
