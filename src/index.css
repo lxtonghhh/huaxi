@@ -1,0 +1,103 @@
+body {
+  margin: auto;
+  margin-left: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+#top-bar {
+    height: 44px;
+    background-color: #fff;
+    top: 0;
+    position: fixed;
+    z-index: 200;
+    width: 100%;
+    border-bottom: solid 1px #ca2100;
+    background-color: #db4c3f;
+    -webkit-transition: height 200ms ease-in;
+    transition: height 200ms ease-in;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+#logo svg{
+    margin-top: 10px;
+    margin-left: 36px;
+    width: 24px;
+    height: 24px;
+    color: #fff;
+}
+.task-item {
+  position: relative;
+  display: flex;
+  border-bottom: 1px solid #f1f1f1;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  min-height: 50px;
+}
+.to-add-bar {
+  position: relative;
+  display: flex;
+  border-bottom: 1px solid #f1f1f1;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  min-height: 50px;
+}
+.to-add-project-bar {
+  padding: 0px 45px;
+}
+td .project-color{
+  height:50px;
+  color: rgb(184, 184, 184);
+  padding: 8px 0px;
+}
+.color-point {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: currentColor;
+    border-radius: 50%;
+}
+.project-item{
+    height:50px;
+    padding: 0;
+    position: relative;
+}
+td .project-content-text .project-update .project-delete 
+.project-update-input .project-update-save .project-update-cancel{
+    height:50px;
+}
+.project-task-count{
+    font-size: 8px;
+    line-height: 5px;
+    padding: 0;
+}
+    
+.task-menu {
+    border-collapse: collapse;
+    padding: 0;
+    margin: 4px 0;
+    min-width: 40px;
+    cursor: default;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 505;
+    color: #333;
+    border-collapse: separate;
+    border-radius: 3px;
+    box-shadow: 0 1px 8px 0 rgba(0,0,0,0.08);
+    border: 1px solid #ddd;
+    -webkit-transform: translateY(1px);
+    transform: translateY(1px);
+}
