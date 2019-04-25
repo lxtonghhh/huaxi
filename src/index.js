@@ -10,6 +10,7 @@ import ScreenTask from './screens/Task/ScreenTask'
 import ScreenWork from './screens/Work/ScreenWork'
 import ScreenAdmin from './screens/Admin/ScreenAdmin'
 import ScreenUpload from './screens/Upload/ScreenUpload'
+import ScreenTest from './test'
 const store =createStore(workReducer)
 ReactDOM.render(
 	<Provider store={store}>
@@ -18,6 +19,7 @@ ReactDOM.render(
 			<Route path="/task" component={ScreenTask}/>
 			<Route path="/work" component={ScreenWork}/>
 			<Route path="/upload" component={ScreenUpload}/>
+			<Route path="/test" component={ScreenTest}/>
 		</Router>
     </Provider>,
 	document.getElementById('root')

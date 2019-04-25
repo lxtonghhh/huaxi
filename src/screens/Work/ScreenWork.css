@@ -31,3 +31,44 @@
     transform: rotate(360deg);
   }
 }
+
+.wrapper{
+  position:absolute;
+  top:40px;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+.workbar{
+  flex-grow:1;
+  margin: 2px;
+  padding: 5px;
+  border: 1px dashed grey;
+  width: 100%;
+}
+.work-main{
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+.workshop{
+  flex-grow:1;
+  width: 730px;
+  margin: 2px;
+  padding: 5px;
+  border: 1px dashed grey;
+  background-color: white;
+}
+.workform{
+  flex-grow:1;
+  width: 35%;
+  margin: 2px;
+  padding: 5px;
+  border: 1px dashed grey;
+}
+.workshop canvas{
+  margin: auto;
+}

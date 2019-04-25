@@ -9,7 +9,18 @@ import Operation from '../../components/Work/Operation'
 import FormList from '../../components/Work/Form/List'
 import store from '../../index'
 import {createSet,confirmSet} from '../../reducers/work'
+import './ScreenWork.css';
 import _ from 'lodash'
+
+function Header(props){
+  return (
+    <div id="top-bar">
+      <div id="logo">
+        <UILogo/>
+      </div>
+    </div>
+  )
+}
 class ScreenWork extends Component{
 	constructor(){
 		super()
@@ -302,39 +313,50 @@ class ScreenWork extends Component{
 		this._next_target()
 	}
 	render(){
+		//<Guide />
 		const sets=this.state.sets
 		const width=this.state.target.width
 		const height=this.state.target.height
 		console.log('render sets:',sets)
 		return (
+
 			<div>
-				<Guide />
-				<Operation sets={sets} activeIndex={this.state.activeIndex} 
-				onSelectSet={this.handleSelectSet.bind(this)} 
-				onCreateSet={this.handleCreateSet.bind(this)} 
-				onUpdateSet={this.handleUpdateSet.bind(this)}
-				onDeleteSet={this.handleDeleteSet.bind(this)}
-				onConfirmSet={this.handleConfirmSet.bind(this)}
-				onCommit={this.handleCommit.bind(this)}
-				/>
-				<div style={{flexDirection:'row',display: 'flex'}}>
-					<Stage width={width} height={height}>
-						<Layer onClick={this.handleSetAdd.bind(this)}>
-							<UIImage src={this.state.target.url}
-							width={width} height={height}
-							/>
-							{sets.map((item,i)=>
-								<NodeList key={i} index={i} 
-								width={width} height={height} 
-								nodes={sets[i].nodes} lines={sets[i].lines} draggable={sets[i].draggable}
-								onNodeChange={this.handleNodeChange.bind(this)} 
-								onNodeAdd={this.handleNodeAdd.bind(this)}
-								onNodeDelete={this.handleNodeDelete.bind(this)}
-								/>
-							)}
-						</Layer>
-					</Stage>
-					<FormList sets={sets} onInfoUpdate={this.handleInfoUpdate.bind(this)} activeIndex={this.state.activeIndex}/>   
+				<Header />
+				<div className="wrapper">
+					<div className="workbar">
+						<Operation sets={sets} activeIndex={this.state.activeIndex} 
+						onSelectSet={this.handleSelectSet.bind(this)} 
+						onCreateSet={this.handleCreateSet.bind(this)} 
+						onUpdateSet={this.handleUpdateSet.bind(this)}
+						onDeleteSet={this.handleDeleteSet.bind(this)}
+						onConfirmSet={this.handleConfirmSet.bind(this)}
+						onCommit={this.handleCommit.bind(this)}
+						/>
+					</div>
+					<div className="work-main">
+						<div className="workshop">
+							<Stage  width={width} height={height}>
+								<Layer onClick={this.handleSetAdd.bind(this)}>
+									<UIImage src={this.state.target.url}
+									width={width} height={height}
+									/>
+									{sets.map((item,i)=>
+										<NodeList key={i} index={i} 
+										width={width} height={height} 
+										nodes={sets[i].nodes} lines={sets[i].lines} draggable={sets[i].draggable}
+										onNodeChange={this.handleNodeChange.bind(this)} 
+										onNodeAdd={this.handleNodeAdd.bind(this)}
+										onNodeDelete={this.handleNodeDelete.bind(this)}
+										/>
+									)}
+								</Layer>
+							</Stage>
+						</div>
+						<div className="workform">
+							<FormList sets={sets} onInfoUpdate={this.handleInfoUpdate.bind(this)} activeIndex={this.state.activeIndex}/>   
+						</div>
+					</div>
+					
 				</div>
 			</div>
 		)

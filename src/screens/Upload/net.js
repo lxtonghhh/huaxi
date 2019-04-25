@@ -39,13 +39,15 @@ export default class NetApi {
     }
 
     upload(url, data) {
+        //更改host
+        //url=url.replace("https://sm-breeze-public.oss-cn-shenzhen.aliyuncs.com","http://112.74.160.190:80/api/v1/put")
         return this.client.request({
             url: url,
             method: 'PUT',
             headers: {
-                Host: 'sm-breeze-01.oss-cn-shenzhen.aliyuncs.com',
-                Connection: 'keep-alive',
-                Accept: '*/*'
+                'Host': 'sm-breeze-public.oss-cn-shenzhen.aliyuncs.com',
+                'Connection': 'keep-alive',
+                'Accept': '*/*'
             },
             body: data
         });
