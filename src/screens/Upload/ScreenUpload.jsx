@@ -12,8 +12,22 @@ class App extends Component {
         this.state = {
             fileToUpload: 0,
             fileList: [],
-            showList: []
+            showList: [],
+            pid: '1',
+            tid: '1'
         }
+    }
+
+    onSetPid(event) {
+        this.setState({
+            pid: event.target.value
+        })
+    }
+
+    onSetTid(event) {
+        this.setState({
+            tid: event.target.value
+        })
     }
 
     uploadFile() {
@@ -21,7 +35,7 @@ class App extends Component {
             console.log('no element in fileList');
             return;
         }
-        net.applyUploadUrl(this.state.fileToUpload).then((event) => {
+        net.applyUploadUrl(this.state.fileToUpload, this.state.pid, this.state.tid).then((event) => {
             this.setState({
                 fileToUpload: 0
             });
@@ -114,16 +128,18 @@ class App extends Component {
     onItemClick(key) {
         return () => {
             net.upload(this.state.showList[key].url, this.state.fileList[key]).then((e) => {
-                this.state.showList[key].success = true;
-                this.state.showList[key].reload = false;
+                const showList = this.state.showList;
+                showList[key].success = true;
+                showList[key].reload = false;
                 this.setState({
-                    showList: this.state.showList
+                    showList: showList
                 });
                 console.log(this.state.fileList[key].name + '上传成功');
             }, (err) => {
-                this.state.showList[key].reload = true;
+                const showList = this.state.showList;
+                showList[key].reload = true;
                 this.setState({
-                    showList: this.state.showList
+                    showList: showList
                 })
             });
         }
@@ -134,6 +150,16 @@ class App extends Component {
             <div className='app'>
                 <div className='header'/>
                 <div className='content'>
+                    <div className='app'>
+                        <div className='content'>
+                            <p>项目ID：</p>
+                            <input onBlur={this.onSetPid.bind(this)}/>
+                        </div>
+                        <div className='content'>
+                            <p>任务ID：</p>
+                            <input onBlur={this.onSetTid.bind(this)}/>
+                        </div>
+                    </div>
                     <input type='file' multiple onChange={this.handleChange.bind(this)}/>
                     <Button size='small' type='primary' onClick={this.uploadFile.bind(this)}>点击上传</Button>
                 </div>
